@@ -1,0 +1,91 @@
+complaint_id,text,audio_path,video_path,priority,eta_days,officer_id
+1,Server is down after update,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,5
+2,Database crashed and data inaccessible,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,2
+3,Server is down after update,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,4
+4,Office internet completely down,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,1
+5,Office internet completely down,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,3
+6,Office internet completely down,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,3
+7,Office internet completely down,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,1
+8,Server is down after update,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,5
+9,Ransomware detected on system,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,3
+10,Database crashed and data inaccessible,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,5
+11,Server is down after update,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,2
+12,Ransomware detected on system,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,4
+13,Server is down after update,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,1
+14,Office internet completely down,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,2
+15,Server is down after update,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,1
+16,Office internet completely down,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,2
+17,Ransomware detected on system,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,4
+18,Ransomware detected on system,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,5
+19,Server is down after update,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,5
+20,Office internet completely down,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,4
+21,Server is down after update,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,4
+22,Ransomware detected on system,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,2
+23,Office internet completely down,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,5
+24,Database crashed and data inaccessible,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,4
+25,Server is down after update,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,4
+26,Database crashed and data inaccessible,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,3
+27,Office internet completely down,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,2
+28,Ransomware detected on system,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,5
+29,Ransomware detected on system,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,3
+30,Server is down after update,data/raw/audio_samples/high.wav,data/raw/video_samples/high.mp4,High,1,4
+31,Laptop is very slow,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,3
+32,Cloud VM responding slowly,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,3
+33,Cloud VM responding slowly,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,5
+34,Cloud VM responding slowly,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,4
+35,Cloud VM responding slowly,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,3
+36,Firewall blocking internal app,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,4
+37,Cloud VM responding slowly,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,3
+38,Firewall blocking internal app,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,4
+39,Laptop is very slow,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,2
+40,Laptop is very slow,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,1
+41,Laptop is very slow,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,3
+42,Laptop is very slow,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,1
+43,Cloud VM responding slowly,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,1
+44,Cloud VM responding slowly,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,3
+45,Firewall blocking internal app,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,3
+46,Laptop is very slow,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,2
+47,Firewall blocking internal app,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,2
+48,Cloud VM responding slowly,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,3
+49,Cloud VM responding slowly,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,4
+50,Laptop is very slow,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,5
+51,Cloud VM responding slowly,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,1
+52,Laptop is very slow,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,1
+53,Laptop is very slow,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,4
+54,Cloud VM responding slowly,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,5
+55,Laptop is very slow,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,5
+56,Laptop is very slow,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,1
+57,Cloud VM responding slowly,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,5
+58,Firewall blocking internal app,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,5
+59,Laptop is very slow,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,4
+60,Firewall blocking internal app,data/raw/audio_samples/medium.wav,data/raw/video_samples/medium.mp4,Medium,3,1
+61,Email setup needed,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,5
+62,Email setup needed,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,5
+63,Need software installation,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,2
+64,Need software installation,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,4
+65,Need software installation,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,2
+66,Password reset request,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,3
+67,Email setup needed,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,1
+68,Need software installation,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,2
+69,Password reset request,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,5
+70,Email setup needed,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,3
+71,Need software installation,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,3
+72,Email setup needed,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,3
+73,Email setup needed,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,2
+74,Need software installation,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,4
+75,Password reset request,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,4
+76,Password reset request,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,2
+77,Email setup needed,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,2
+78,Email setup needed,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,4
+79,Email setup needed,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,4
+80,Email setup needed,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,2
+81,Need software installation,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,3
+82,Need software installation,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,5
+83,Email setup needed,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,2
+84,Password reset request,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,4
+85,Need software installation,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,4
+86,Email setup needed,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,3
+87,Need software installation,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,2
+88,Email setup needed,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,3
+89,Email setup needed,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,3
+90,Need software installation,data/raw/audio_samples/low.wav,data/raw/video_samples/low.mp4,Low,6,5

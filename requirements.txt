@@ -1,0 +1,9 @@
+numpy
+pandas
+scikit-learn
+sentence-transformers
+librosa
+opencv-python
+faiss-cpu
+joblib
+flask
