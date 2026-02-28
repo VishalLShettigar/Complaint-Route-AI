@@ -3,116 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise AI Triage System</title>
+    <title>ComplaintRoute AI • User Portal</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/static/style.css">
 </head>
-<body>
+<body class="theme-user">
 
-<nav class="navbar">
-    <div class="nav-content">
-        <div class="logo">
-            <i class="fas fa-brain-circuit"></i> 
-            <span>Complaint<b>Route</b> AI</span>
+<header class="app-shell">
+    <nav class="top-nav">
+        <div class="top-nav-left">
+            <div class="brand">
+                <span class="brand-icon">
+                    <i class="fas fa-brain"></i>
+                </span>
+                <div class="brand-text">
+                    <span class="brand-title">Complaint<span>Route</span></span>
+                    <span class="brand-subtitle">AI-powered triage workspace</span>
+                </div>
+            </div>
         </div>
-        <div class="nav-actions">
-            <a href="/admin" class="admin-btn">
-                <i class="fas fa-user-gear"></i> Admin Portal
+        <div class="top-nav-right">
+            <div class="pill status-pill">
+                <span class="status-dot live"></span>
+                <span>Local inference engine</span>
+            </div>
+            <a href="/admin" class="pill ghost-pill">
+                <i class="fas fa-gauge-high"></i>
+                <span>Admin console</span>
             </a>
-            <div class="status-badge">
-                <span class="dot"></span> Local Engine Active
-            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>
 
-<div class="container">
-    <header class="hero-section fade-in">
-        <h1>Complaint <span class="gradient-text">Intelligence</span> Portal</h1>
-        <p>Automated Multilingual Triage & High-Precision Routing System</p>
-    </header>
-
-    <section class="card submission-card fade-in">
-        <div class="card-header">
-            <h3><i class="fas fa-file-signature"></i> New Submission</h3>
+<main class="page page-user">
+    <section class="page-header">
+        <div>
+            <h1>Submit a <span class="accent-gradient">new complaint</span></h1>
+            <p>Describe the issue once. The engine will prioritize, estimate resolution time, and route it to the best-suited officer.</p>
         </div>
-        <form method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label>Problem Description</label>
-                <textarea name="text" placeholder="Describe the issue in detail... (Supports Multilingual Input)" required></textarea>
-            </div>
-
-            <div class="multimodal-grid">
-                <div class="upload-btn">
-                    <i class="fas fa-microphone"></i>
-                    <span>Audio Attachment</span>
-                    <input type="file" name="audio" accept="audio/*">
-                </div>
-                <div class="upload-btn">
-                    <i class="fas fa-video"></i>
-                    <span>Video Evidence</span>
-                    <input type="file" name="video" accept="video/*">
-                </div>
-            </div>
-
-            <button type="submit" class="primary-btn">
-                Analyze & Route Case <i class="fas fa-bolt-lightning"></i>
-            </button>
-        </form>
+        <ul class="header-highlights">
+            <li><i class="fas fa-language"></i> Multilingual text support</li>
+            <li><i class="fas fa-headset"></i> Optional audio &amp; video evidence</li>
+            <li><i class="fas fa-shield-check"></i> Runs fully on your machine</li>
+        </ul>
     </section>
 
-    {% if result %}
-    <div class="dashboard-grid slide-up">
-        <div class="dashboard-column">
-            <div class="glass-card triage-summary">
-                <div class="card-header"><h4><i class="fas fa-chart-line"></i> Case Triage</h4></div>
-                
-                <div class="metric-item">
-                    <span class="m-label">Priority Prediction</span>
-                    <div class="priority-tag {{ result.priority|lower }}">{{ result.priority }}</div>
-                </div>
-
-                <div class="metric-item">
-                    <span class="m-label">Estimated Resolution Time</span>
-                    <div class="m-value">{{ result.eta_days }} <small>Days</small></div>
-                </div>
-
-                <div class="officer-identity">
-                    <div class="avatar"><i class="fas fa-user-shield"></i></div>
-                    <div class="id-details">
-                        <span class="m-label">Assigned Officer</span>
-                        <div class="name">{{ result.officer.name }}</div>
-                        <div class="dept">{{ result.officer.department }}</div>
+    <section class="grid-2">
+        <section class="panel panel-primary">
+            <header class="panel-header">
+                <div class="panel-title">
+                    <i class="fas fa-file-pen"></i>
+                    <div>
+                        <h2>Complaint details</h2>
+                        <p>Provide as much context as possible to get accurate triage.</p>
                     </div>
                 </div>
-            </div>
-        </div>
+            </header>
 
-        <div class="dashboard-column">
-            <div class="glass-card similarity-engine">
-                <div class="card-header"><h4><i class="fas fa-folder-tree"></i> Similarity Context</h4></div>
-                <p class="helper-text">Matches retrieved from local vector database (FAISS)</p>
-                
-                <div class="case-list">
-                    {% for c in result.past_complaints %}
-                    <div class="history-card">
-                        <p class="history-text">"{{ c.text[:120] }}..."</p>
-                        <div class="history-footer">
-                            <span><i class="fas fa-tag"></i> {{ c.priority }}</span>
-                            <span><i class="fas fa-calendar-check"></i> {{ c.eta_days }}d</span>
+            <form method="post" enctype="multipart/form-data" class="form">
+                <div class="field">
+                    <label for="complaint-text">Problem description</label>
+                    <p class="field-hint">Write in natural language, any supported language. Avoid personal identifiers if possible.</p>
+                    <textarea
+                        id="complaint-text"
+                        name="text"
+                        required
+                        rows="7"
+                        placeholder="Example: The corporate VPN disconnects every 5–10 minutes and prevents me from reaching internal Git servers..."
+                    ></textarea>
+                </div>
+
+                <div class="field-group">
+                    <h3 class="field-group-title">
+                        <i class="fas fa-layer-group"></i>
+                        Optional evidence
+                    </h3>
+                    <div class="evidence-grid">
+                        <label class="upload-card">
+                            <span class="upload-icon">
+                                <i class="fas fa-microphone-lines"></i>
+                            </span>
+                            <span class="upload-text">
+                                <span class="upload-title">Audio attachment</span>
+                                <span class="upload-subtitle">Spoken description or call recording</span>
+                            </span>
+                            <input type="file" name="audio" accept="audio/*">
+                        </label>
+
+                        <label class="upload-card">
+                            <span class="upload-icon">
+                                <i class="fas fa-video"></i>
+                            </span>
+                            <span class="upload-text">
+                                <span class="upload-title">Video evidence</span>
+                                <span class="upload-subtitle">Screen capture or incident footage</span>
+                            </span>
+                            <input type="file" name="video" accept="video/*">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <span>Analyze and route case</span>
+                        <i class="fas fa-bolt"></i>
+                    </button>
+                    <p class="small-note">
+                        Predictions are generated locally using classical ML models; no data leaves this machine.
+                    </p>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel panel-secondary">
+            <header class="panel-header compact">
+                <div class="panel-title">
+                    <i class="fas fa-diagram-project"></i>
+                    <div>
+                        <h2>Case routing outcome</h2>
+                        <p>Live explanation of how the engine triaged your last submission.</p>
+                    </div>
+                </div>
+            </header>
+
+            {% if result %}
+            <div class="result-grid">
+                <div class="result-section">
+                    <h3 class="section-label">Triage summary</h3>
+                    <div class="summary-grid">
+                        <div class="summary-card">
+                            <span class="summary-label">Priority</span>
+                            <span class="priority-chip {{ result.priority|lower }}">{{ result.priority }}</span>
+                        </div>
+                        <div class="summary-card">
+                            <span class="summary-label">Estimated resolution</span>
+                            <span class="eta-chip">
+                                {{ result.eta_days }}
+                                <span class="eta-unit">days</span>
+                            </span>
                         </div>
                     </div>
-                    {% endfor %}
+
+                    <div class="officer-card">
+                        <div class="officer-avatar">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <div class="officer-meta">
+                            <span class="officer-label">Assigned officer</span>
+                            <span class="officer-name">{{ result.officer.name }}</span>
+                            <span class="officer-dept">{{ result.officer.department }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-section">
+                    <h3 class="section-label">Similar past complaints</h3>
+                    <p class="section-caption">
+                        Retrieved from the local FAISS index to help justify the routing decision.
+                    </p>
+                    <div class="history-list">
+                        {% for c in result.past_complaints %}
+                        <article class="history-item">
+                            <p class="history-text">"{{ c.text[:160] }}..."</p>
+                            <div class="history-meta">
+                                <span class="meta-pill priority-{{ c.priority|lower }}">
+                                    <i class="fas fa-flag"></i>
+                                    {{ c.priority }} priority
+                                </span>
+                                <span class="meta-pill">
+                                    <i class="fas fa-hourglass-half"></i>
+                                    {{ c.eta_days }} days
+                                </span>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    {% endif %}
-</div>
+            {% else %}
+            <div class="empty-state">
+                <div class="empty-icon">
+                    <i class="fas fa-inbox"></i>
+                </div>
+                <h3>No case analyzed yet</h3>
+                <p>Submit a complaint on the left to see priority, ETA, and routing decisions here.</p>
+            </div>
+            {% endif %}
+        </section>
+    </section>
+</main>
 
-<footer class="footer">
-    <p>© AI Complaint Router • Local Transformer Inference • Enterprise Edition</p>
+<footer class="app-footer">
+    <div class="footer-inner">
+        <span>© ComplaintRoute AI &middot; Offline ML pipeline demo</span>
+        <span class="footer-meta">
+            <i class="fas fa-microchip"></i> Text · Audio · Video fusion
+        </span>
+    </div>
 </footer>
 
 </body>

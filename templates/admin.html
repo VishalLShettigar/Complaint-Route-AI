@@ -3,75 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligence Console | NeuralRoute Admin</title>
+    <title>ComplaintRoute AI • Admin Console</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/static/style.css">
 </head>
-<body class="admin-theme">
+<body class="theme-admin">
 
-    <nav class="glass-nav">
-        <div class="nav-content">
-            <div class="logo">
-                <i class="fas fa-shield-halved"></i>
-                <span>Admin<b>Console</b></span>
-            </div>
-            <div class="nav-links">
-                <a href="/" class="admin-btn"><i class="fas fa-home"></i> User Portal</a>
-                <div class="system-status">
-                    <span class="pulse-indicator"></span> 
-                    Model Status: <b>Operational</b>
+<header class="app-shell">
+    <nav class="top-nav">
+        <div class="top-nav-left">
+            <div class="brand">
+                <span class="brand-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </span>
+                <div class="brand-text">
+                    <span class="brand-title">Complaint<span>Route</span> Admin</span>
+                    <span class="brand-subtitle">Monitoring and model observability</span>
                 </div>
+            </div>
+        </div>
+        <div class="top-nav-right">
+            <a href="/" class="pill ghost-pill">
+                <i class="fas fa-user"></i>
+                <span>User portal</span>
+            </a>
+            <div class="pill status-pill">
+                <span class="status-dot live"></span>
+                <span>Model status: <strong>Operational</strong></span>
             </div>
         </div>
     </nav>
+</header>
 
-    <main class="admin-container">
-        <header class="dashboard-header fade-in">
-            <h1>System <span class="gradient-text">Performance</span> Metrics</h1>
-            <p>Evaluating Multi-task ML Pipeline: Classification, Regression, and Vector Search.</p>
-        </header>
-
-        
-
-        <div class="kpi-grid">
-            <div class="kpi-card slide-up">
-                <div class="kpi-icon blue"><i class="fas fa-database"></i></div>
-                <div class="kpi-data">
-                    <span class="kpi-label">Total Volume</span>
-                    <span class="kpi-value">{{ metrics.total_complaints }}</span>
-                </div>
-            </div>
-            <div class="kpi-card slide-up" style="animation-delay: 0.1s;">
-                <div class="kpi-icon green"><i class="fas fa-bullseye"></i></div>
-                <div class="kpi-data">
-                    <span class="kpi-label">Model Accuracy</span>
-                    <span class="kpi-value">{{ "%.1f"|format(metrics.accuracy * 100) }}%</span>
-                </div>
-            </div>
-            <div class="kpi-card slide-up" style="animation-delay: 0.2s;">
-                <div class="kpi-icon orange"><i class="fas fa-hourglass-half"></i></div>
-                <div class="kpi-data">
-                    <span class="kpi-label">ETA Error (MAE)</span>
-                    <span class="kpi-value">{{ metrics.mae }} <small>Days</small></span>
-                </div>
-            </div>
+<main class="page page-admin">
+    <header class="page-header">
+        <div>
+            <h1>System <span class="accent-gradient">health overview</span></h1>
+            <p>Track dataset volume, classification quality, ETA error and routing distribution for the offline ML pipeline.</p>
         </div>
+    </header>
 
-        <div class="main-dashboard-grid">
-            
-            <section class="glass-card slide-up" style="animation-delay: 0.3s;">
-                <div class="card-title">
-                    <i class="fas fa-microchip"></i> 
-                    <h3>Priority Classification Report</h3>
+    <section class="kpi-row">
+        <article class="kpi-card">
+            <div class="kpi-icon kpi-icon-blue">
+                <i class="fas fa-database"></i>
+            </div>
+            <div class="kpi-body">
+                <span class="kpi-label">Total complaints</span>
+                <span class="kpi-value">{{ metrics.total_complaints }}</span>
+            </div>
+        </article>
+
+        <article class="kpi-card">
+            <div class="kpi-icon kpi-icon-green">
+                <i class="fas fa-bullseye"></i>
+            </div>
+            <div class="kpi-body">
+                <span class="kpi-label">Priority accuracy</span>
+                <span class="kpi-value">{{ "%.1f"|format(metrics.accuracy * 100) }}%</span>
+            </div>
+        </article>
+
+        <article class="kpi-card">
+            <div class="kpi-icon kpi-icon-amber">
+                <i class="fas fa-hourglass-half"></i>
+            </div>
+            <div class="kpi-body">
+                <span class="kpi-label">ETA error (MAE)</span>
+                <span class="kpi-value">{{ metrics.mae }} <span class="kpi-unit">days</span></span>
+            </div>
+        </article>
+    </section>
+
+    <section class="grid-2 admin-grid">
+        <section class="panel panel-primary">
+            <header class="panel-header compact">
+                <div class="panel-title">
+                    <i class="fas fa-microchip"></i>
+                    <div>
+                        <h2>Priority classification report</h2>
+                        <p>Per-class precision, recall and F1 on the current dataset.</p>
+                    </div>
                 </div>
-                <table class="data-table">
+            </header>
+
+            <div class="table-wrapper">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Class</th>
                             <th>Precision</th>
                             <th>Recall</th>
-                            <th>F1-Score</th>
+                            <th>F1 score</th>
                             <th>Support</th>
                         </tr>
                     </thead>
@@ -79,72 +103,100 @@
                         {% for label, values in metrics.classification_report.items() %}
                         {% if label in ["High", "Medium", "Low"] %}
                         <tr>
-                            <td><span class="badge {{ label|lower }}">{{ label }}</span></td>
-                            <td class="monospaced">{{ "%.2f"|format(values.precision) }}</td>
-                            <td class="monospaced">{{ "%.2f"|format(values.recall) }}</td>
-                            <td class="monospaced highlight">{{ "%.2f"|format(values['f1-score']) }}</td>
-                            <td class="support-count">{{ values.support }}</td>
+                            <td>
+                                <span class="badge badge-{{ label|lower }}">{{ label }}</span>
+                            </td>
+                            <td class="mono">{{ "%.2f"|format(values.precision) }}</td>
+                            <td class="mono">{{ "%.2f"|format(values.recall) }}</td>
+                            <td class="mono highlight">{{ "%.2f"|format(values['f1-score']) }}</td>
+                            <td class="mono">{{ values.support }}</td>
                         </tr>
                         {% endif %}
                         {% endfor %}
                     </tbody>
                 </table>
-            </section>
-
-            <section class="glass-card slide-up" style="animation-delay: 0.4s;">
-                <div class="card-title">
-                    <i class="fas fa-chart-pie"></i>
-                    <h3>Distribution Analytics</h3>
-                </div>
-                <div class="dist-list">
-                    {% for k, v in metrics.priority_distribution.items() %}
-                    <div class="dist-item">
-                        <div class="dist-info">
-                            <span>{{ k }} Priority</span>
-                            <span>{{ v }} cases</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill {{ k|lower }}" style="width: {{ (v / metrics.total_complaints * 100)|round }}%"></div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </section>
-        </div>
-
-        <section class="glass-card full-width-card slide-up" style="animation-delay: 0.5s;">
-            <div class="card-title">
-                <i class="fas fa-list-check"></i>
-                <h3>Historical Complaint Logs</h3>
-            </div>
-            <div class="table-wrapper">
-                <table class="data-table log-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Complaint Extract</th>
-                            <th>Assigned Priority</th>
-                            <th>Predicted ETA</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for c in complaints %}
-                        <tr>
-                            <td class="id-cell">#{{ c.complaint_id }}</td>
-                            <td class="text-cell">{{ c.text[:80] }}...</td>
-                            <td><span class="status-dot {{ c.priority|lower }}"></span> {{ c.priority }}</td>
-                            <td><span class="eta-pill">{{ c.eta_days }} Days</span></td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
             </div>
         </section>
-    </main>
 
-    <footer class="admin-footer">
-        <p>AI/ML Technical Assignment • Offline Inference Framework • Build v1.0.2</p>
-    </footer>
+        <section class="panel panel-secondary">
+            <header class="panel-header compact">
+                <div class="panel-title">
+                    <i class="fas fa-chart-pie"></i>
+                    <div>
+                        <h2>Priority distribution</h2>
+                        <p>How often each priority level is assigned in the dataset.</p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="distribution-list">
+                {% for k, v in metrics.priority_distribution.items() %}
+                <div class="distribution-row">
+                    <div class="distribution-meta">
+                        <span>{{ k }} priority</span>
+                        <span class="distribution-count">{{ v }} cases</span>
+                    </div>
+                    <div class="distribution-bar">
+                        <div
+                            class="distribution-fill priority-{{ k|lower }}"
+                            style="width: {{ (v / metrics.total_complaints * 100)|round }}%;"
+                        ></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </section>
+
+    <section class="panel panel-table">
+        <header class="panel-header compact">
+            <div class="panel-title">
+                <i class="fas fa-list-check"></i>
+                <div>
+                    <h2>Historical complaint log</h2>
+                    <p>Latest stored complaints with assigned priority and predicted ETA.</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="table-wrapper scrollable">
+            <table class="table table-logs">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Complaint extract</th>
+                        <th>Priority</th>
+                        <th>Predicted ETA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in complaints %}
+                    <tr>
+                        <td class="cell-id">#{{ c.complaint_id }}</td>
+                        <td class="cell-text">{{ c.text[:80] }}...</td>
+                        <td>
+                            <span class="status-dot priority-{{ c.priority|lower }}"></span>
+                            {{ c.priority }}
+                        </td>
+                        <td>
+                            <span class="eta-pill">{{ c.eta_days }} days</span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<footer class="app-footer">
+    <div class="footer-inner">
+        <span>AI/ML technical assignment • Offline inference framework</span>
+        <span class="footer-meta">
+            <i class="fas fa-code-branch"></i> Build v1.0.2
+        </span>
+    </div>
+</footer>
 
 </body>
 </html>
