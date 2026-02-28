@@ -4,6 +4,7 @@ import pandas as pd
 from src.evaluate_models import evaluate_models
 
 app = Flask(__name__)
+gunicorn app:app
 
 @app.route("/", methods=["GET", "POST"])
 def home():
