@@ -7,3 +7,4 @@ opencv-python
 faiss-cpu
 joblib
 flask
+gunicorn
